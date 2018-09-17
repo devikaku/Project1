@@ -1,20 +1,49 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
-import junit.framework.TestCase;
 
-public class TestSearchMap extends TestCase{
-//The FlightMap class, implemented in FlightMap.java, stores a map and provides operations that
-//facilitate a search of the map.
-	//Your program must determine the route to each city that can be reached from the
-	//origin city and the associated total cost.
-	@Test
-	public void getInput() {
-		fail("Not yet implemented");
+/**
+ * 
+ */
+
+/**
+ * @author devikakumar
+ *
+ */
+public class TestSearchMap {
+
+	SearchMap search;
+
+	@Before
+	public void setUp() {
+		search = new SearchMap();
 	}
-	
+
+	/**
+	 * Test method for {@link SearchMap#parseAndCreateEdge(String)}.
+	 */
 	@Test
-	public void produceOutput() {
-		fail("Not yet implemented");
+	public void testParseAndCreateEdgeValid() {
+		String s = "        P          W              300 ";
+		search.parseAndCreateEdge(s);
+		CityNode source = search.map.getCities().get('P');
+		CityNode dest = search.map.getCities().get('W');
+		assertNotNull(source);
+		assertNotNull(dest);
+		assertEquals((int) source.getCostTo(dest), 300);
+
 	}
+
+	/**
+	 * Test method for {@link SearchMap#parseAndCreateEdge(String)}.
+	 */
+	@Test
+	public void testParseAndCreateEdgeInvalid() {
+		String s = "        P     I     W              300 ";
+		search.parseAndCreateEdge(s);
+		assertNull(search.map.getCities().get('P'));
+		assertNull(search.map.getCities().get('W'));
+	}
+
 }
