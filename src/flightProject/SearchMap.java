@@ -1,3 +1,4 @@
+package flightProject;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -94,7 +95,7 @@ public class SearchMap {
 	 * Helper function that parses each string of a file and creates edges for nodes
 	 * in the graph
 	 * 
-	 * @param a
+	 * @param input
 	 *            String as input
 	 */
 	public static void parseAndCreateEdge(String input) {
